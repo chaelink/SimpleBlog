@@ -12,7 +12,8 @@ import java.util.List;
 @Setter
 @ToString
 public class Post {
-    String id;
+    Long uid;
+    String userName;
     Date date;
     String title;
     String contents;

@@ -10,7 +10,8 @@ import java.util.Date;
 @Setter
 @ToString
 public class Comment {
-    String id;
+    Long uid;
+    String userName;
     Date date;
     String content;
     boolean isSecret;
