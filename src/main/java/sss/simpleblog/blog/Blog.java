@@ -11,8 +11,8 @@ import java.util.List;
 @Setter
 @ToString
 public class Blog {
-    Long uid;
-    String userName;
-    List<Post> posts;
-    Long hits;
+    private Long uid;
+    private String userName;
+    private List<Post> posts;
+    private Long hits;
 }

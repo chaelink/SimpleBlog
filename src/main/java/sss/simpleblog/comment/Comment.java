@@ -10,9 +10,9 @@ import java.util.Date;
 @Setter
 @ToString
 public class Comment {
-    Long uid;
-    String userName;
-    Date date;
-    String content;
-    boolean isSecret;
+    private Long uid;
+    private String userName;
+    private Date date;
+    private String content;
+    private boolean isSecret;
 }

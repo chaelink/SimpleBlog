@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @ToString
 public class Member {
-    Long uid;
-    String userName;
-    String password;
+    private Long uid;
+    private String userName;
+    private String password;
 }

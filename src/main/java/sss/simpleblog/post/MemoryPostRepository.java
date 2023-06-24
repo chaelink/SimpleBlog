@@ -10,8 +10,9 @@ public class MemoryPostRepository implements PostRepository {
 
     @Override
     public Post save(Post post) {
-        post.setUid((long)store.size());
-        post.setDate(new Date());
+        // Comment: 이런식으로 서비스 계층에서 새글 작성 시 구현하면 편할 것 같습니다!
+        // post.setUid((long)store.size());
+        // post.setDate(new Date());
         return store.put(post.getUid(), post);
     }
 

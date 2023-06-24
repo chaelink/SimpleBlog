@@ -12,13 +12,13 @@ import java.util.List;
 @Setter
 @ToString
 public class Post implements Comparable<Post> {
-    Long uid;
-    String userName;
-    Date date;
-    String title;
-    String contents;
-    List<Comment> comments;
-    Long hits;
+    private Long uid;
+    private String userName;
+    private Date date;
+    private String title;
+    private String contents;
+    private List<Comment> comments;
+    private Long hits;
 
     @Override
     public int compareTo(Post o) {
