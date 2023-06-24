@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class Post {
+public class Post implements Comparable<Post> {
     Long uid;
     String userName;
     Date date;
@@ -19,4 +19,9 @@ public class Post {
     String contents;
     List<Comment> comments;
     Long hits;
+
+    @Override
+    public int compareTo(Post o) {
+        return this.getDate().compareTo(o.getDate());
+    }
 }

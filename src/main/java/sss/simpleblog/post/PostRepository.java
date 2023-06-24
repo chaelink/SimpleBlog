@@ -4,8 +4,12 @@ import java.util.List;
 
 public interface PostRepository {
 
-    //Todo: 날짜순 정렬저장 기본으로
-    void save(Post post);
+    /**
+     *
+     * @param post auto increased uid
+     * @return if failed return null, else return post
+     */
+    Post save(Post post);
 
     /**
      * uid와 일치한 포스트를 리턴

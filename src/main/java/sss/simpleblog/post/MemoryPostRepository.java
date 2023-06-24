@@ -1,40 +1,95 @@
 package sss.simpleblog.post;
 
-import java.util.List;
+import org.springframework.stereotype.Component;
 
+import java.util.*;
+
+@Component
 public class MemoryPostRepository implements PostRepository {
+    private final Map<Long, Post> store = new HashMap<>();
+
     @Override
-    public void save(Post post) {
-        
+    public Post save(Post post) {
+        post.setUid((long)store.size());
+        post.setDate(new Date());
+        return store.put(post.getUid(), post);
     }
 
     @Override
     public Post findByUid(Long uid) {
-        return null;
+        return store.get(uid);
     }
 
     @Override
     public List<Post> findByUsername(String userName) {
-        return null;
+        List <Post> findList = new ArrayList<>();
+
+        for (Post post: store.values()) {
+            if (post.getUserName().equals(userName)) {
+                findList.add(post);
+            }
+        }
+
+        return findList;
     }
 
     @Override
     public List<Post> findByTitle(String title) {
-        return null;
+        List <Post> findList = new ArrayList<>();
+
+        for (Post post: store.values()) {
+            if (post.getTitle().equals(title)) {
+                findList.add(post);
+            }
+        }
+
+        return findList;
     }
 
     @Override
     public List<Post> findByIncludeTitle(String title) {
-        return null;
+        List <Post> findList = new ArrayList<>();
+
+        for (Post post: store.values()) {
+            if (post.getTitle().contains(title)) {
+                findList.add(post);
+            }
+        }
+
+        return findList;
     }
 
     @Override
     public List<Post> findByIncludeContents(String contents) {
-        return null;
+        List <Post> findList = new ArrayList<>();
+
+        for (Post post: store.values()) {
+            if (post.getContents().contains(contents)) {
+                findList.add(post);
+            }
+        }
+
+        return findList;
     }
 
     @Override
     public List<Post> findByDateOrderedPage(Long pagingNum, Long pageOffset, boolean isDescent) {
-        return null;
+        List<Post> data = new ArrayList<>(store.values());
+        List<Post> findList = new ArrayList<>();
+
+        int startIndex = pagingNum.intValue() * pageOffset.intValue();
+        int lastIndex = Math.min(store.size(), startIndex + pagingNum.intValue());
+
+        if (isDescent) {
+            Collections.reverse(data);
+        } else {
+            Collections.sort(data);
+        }
+
+        for (int i = startIndex; i < lastIndex; i++) {
+            findList.add(data.get(i));
+        }
+
+        return findList;
     }
 }
