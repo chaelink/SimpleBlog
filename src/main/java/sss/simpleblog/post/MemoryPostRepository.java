@@ -16,6 +16,10 @@ public class MemoryPostRepository implements PostRepository {
         return store.put(post.getUid(), post);
     }
 
+    public Post remove(List list) {
+        return store.remove(list);
+    }
+
     @Override
     public Post findByUid(Long uid) {
         return store.get(uid);
